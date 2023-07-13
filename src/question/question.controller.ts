@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from "express";
 import Controller from "../globalinterfaces/controller.interface";
 import QuestionService from "./question.service";
-import IQuestion from "./question.interface";
+import {IQuestion} from "./question.interface";
 import AuthMiddleware from "../middlewares/auth.middleware";
 import CheckAdminMiddleware from "../middlewares/check.role.middleware";
 
@@ -24,6 +24,8 @@ class QuestionController implements Controller {
       CheckAdminMiddleware,
       this.createQuestion
     );
+
+    this.router.post(`${this.path}/submit/:questionId`, this.submitQuestion);
     this.router.patch(
       `${this.path}/addtc/:questionId`,
       AuthMiddleware,
@@ -151,6 +153,24 @@ class QuestionController implements Controller {
     try {
       const { questionId } = req.params;
       const response = await this.questionservice.modifyQuestion(
+        questionId,
+        req.body
+      );
+      return res.status(200).json({
+        success: true,
+        message: "Successfully got the list of all Materials",
+        data: response,
+        err: {},
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  public submitQuestion = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { questionId } = req.params;
+      const response = await this.questionservice.submitQuestion(
         questionId,
         req.body
       );

@@ -1,8 +1,13 @@
+interface ITC {
+  input: String;
+  output: String;
+}
+
 interface IQuestion {
   _id?: string;
   title: string;
   description: string;
-  testCases: string[];
+  testCases: [ITC];
 }
 
-export default IQuestion;
+export { IQuestion, ITC };

@@ -1,17 +1,22 @@
 import * as mongoose from "mongoose";
 import { Schema } from "mongoose";
-import IQuestion from "./question.interface";
+import {IQuestion} from "./question.interface";
 
 const questionSchema: Schema<IQuestion> = new Schema<IQuestion>({
   title: { type: String, required: true },
   description: { type: String, required: true },
-  testCases: [{ type: String }],
+  testCases: {
+    type: [
+      {
+        input: { type: String },
+        output: { type: String },
+      },
+    ],
+    default: [],
+  },
 });
 
 // Create the Question model
-const questionModel = mongoose.model<IQuestion>(
-  "Question",
-  questionSchema
-);
+const questionModel = mongoose.model<IQuestion>("Question", questionSchema);
 
 export default questionModel;
