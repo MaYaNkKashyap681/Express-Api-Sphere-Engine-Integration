@@ -98,3 +98,8 @@ If your project exposes an API, provide information about accessing and using th
 - `POST /auth/register`: Register a new user.
 - `POST /auth/login`: Login with user credentials.
 
+  | Variable    | Description                          |
+  |-------------|--------------------------------------|
+  | Deployed   | https://express-api-sphere-engine-integration.vercel.app|
+  | Video      | https://drive.google.com/file/d/1vExf2ANJXjgeL6J2qjVgltjIIKAfbQJ1/view?usp=sharing                        |
+ 
