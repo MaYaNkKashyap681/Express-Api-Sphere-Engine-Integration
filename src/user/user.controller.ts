@@ -47,10 +47,10 @@ class UserController implements Controller {
     }
   };
 
-  private getUser = async (req: Request, res: Response, next: NextFunction) => {
+  private getUser = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
-      const { userId } = req.params;
-      const response = await this.userservice.getOneUser(userId);
+      
+      const response = await this.userservice.getOneUser(req.user._id);
       return res.status(200).json({
         success: true,
         message: "Successfully got a user",
