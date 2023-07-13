@@ -1,4 +1,5 @@
 import * as express from "express";
+import { Request, Response } from "express";
 import * as cookieParser from "cookie-parser";
 import Controller from "./globalinterfaces/controller.interface";
 import * as mongoose from "mongoose";
@@ -41,6 +42,13 @@ class App {
   private initializeControllers(controllers: Controller[]) {
     controllers.forEach((controller) => {
       this.app.use("/", controller.router);
+    });
+
+    //API for Testing Purpose
+    this.app.get("/", (req: Request, res: Response) => {
+      res.status(200).json({
+        msg: "Api is Working successfully",
+      });
     });
   }
   private connectToDatabase() {
