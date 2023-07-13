@@ -2,10 +2,13 @@ import { Model } from "mongoose";
 import Service from "../globalinterfaces/service.interface";
 import { IQuestion, ITC } from "./question.interface";
 import questionModel from "./question.model";
-import * as axios from "axios";
+import { AxiosInstance } from 'axios';
+import * as axios from 'axios';
 import HTTPException from "../exceptions/http.exception";
 import * as dotenv from "dotenv";
 dotenv.config();
+
+const instance: AxiosInstance = axios.create();
 
 class QuestionService implements Service {
   public dbModel: Model<IQuestion>;
@@ -92,7 +95,7 @@ class QuestionService implements Service {
           expectedOutput: tc.output,
         };
   
-        return axios
+        return instance
           .post(
             `https://api.compilers.sphere-engine.com/api/v4/submissions?access_token=${process.env.api_token}`,
             payload
@@ -115,7 +118,7 @@ class QuestionService implements Service {
         const submissionExistPromises = submissionResults.map((submissionId) => {
           return new Promise(async (resolve, reject) => {
             try {
-              const response = await axios.get(
+              const response = await instance.get(
                 `https://api.compilers.sphere-engine.com/api/v4/submissions/${submissionId}?access_token=${process.env.api_token}`
               );
   
@@ -136,7 +139,7 @@ class QuestionService implements Service {
           const resultPromises = submissionResults.map((submissionId) => {
             return new Promise(async (resolve, reject) => {
               try {
-                const response = await axios.get(
+                const response = await instance.get(
                   `https://api.compilers.sphere-engine.com/api/v4/submissions/${submissionId}/output?access_token=${process.env.api_token}`
                 );
   

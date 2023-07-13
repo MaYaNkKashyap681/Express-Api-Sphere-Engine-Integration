@@ -1,6 +1,7 @@
-import * as express from "express";
+
+import express = require('express');
 import { Request, Response } from "express";
-import * as cookieParser from "cookie-parser";
+import cookieParser = require("cookie-parser")
 import Controller from "./globalinterfaces/controller.interface";
 import * as mongoose from "mongoose";
 import { config } from "./config/serverConfig";
