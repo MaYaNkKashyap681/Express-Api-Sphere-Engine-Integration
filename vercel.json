@@ -7,19 +7,19 @@
     }
   ],
   "routes": [
-    { "src": "/user/all", "dest": "src/controllers/user.controller.ts" },
-    { "src": "/user/getuser", "dest": "src/controllers/user.controller.ts" },
-    { "src": "/user/update", "dest": "src/controllers/user.controller.ts" },
-    { "src": "/user/del", "dest": "src/controllers/user.controller.ts" },
-    { "src": "/question/all", "dest": "src/controllers/question.controller.ts" },
-    { "src": "/question/:questionId", "dest": "src/controllers/question.controller.ts" },
-    { "src": "/question/add", "dest": "src/controllers/question.controller.ts" },
-    { "src": "/question/submit/:questionId", "dest": "src/controllers/question.controller.ts" },
-    { "src": "/question/addtc/:questionId", "dest": "src/controllers/question.controller.ts" },
-    { "src": "/question/del/:questionId", "dest": "src/controllers/question.controller.ts" },
-    { "src": "/question/modify/:questionId", "dest": "src/controllers/question.controller.ts" },
-    { "src": "/auth/register", "dest": "src/controllers/auth.controller.ts" },
-    { "src": "/auth/login", "dest": "src/controllers/auth.controller.ts" }
+    { "src": "/user/all", "dist": "src/controllers/user.controller.ts" },
+    { "src": "/user/getuser", "dist": "src/controllers/user.controller.ts" },
+    { "src": "/user/update", "dist": "src/controllers/user.controller.ts" },
+    { "src": "/user/del", "dist": "src/controllers/user.controller.ts" },
+    { "src": "/question/all", "dist": "src/controllers/question.controller.ts" },
+    { "src": "/question/:questionId", "dist": "src/controllers/question.controller.ts" },
+    { "src": "/question/add", "dist": "src/controllers/question.controller.ts" },
+    { "src": "/question/submit/:questionId", "dist": "src/controllers/question.controller.ts" },
+    { "src": "/question/addtc/:questionId", "dist": "src/controllers/question.controller.ts" },
+    { "src": "/question/del/:questionId", "dist": "src/controllers/question.controller.ts" },
+    { "src": "/question/modify/:questionId", "dist": "src/controllers/question.controller.ts" },
+    { "src": "/auth/register", "dist": "src/controllers/auth.controller.ts" },
+    { "src": "/auth/login", "dist": "src/controllers/auth.controller.ts" }
   ],
   "env": {
     "api_token": "c79cb7486d179a4cf4b7ca7fe85a5978",
