@@ -5,6 +5,7 @@ import { Request, Response, NextFunction } from "express";
 import UserService from "./user.service";
 import AuthMiddleware from "../middlewares/auth.middleware";
 import RequestWithUser from "../globalinterfaces/user.request.interface";
+import CheckAdminMiddleware from "../middlewares/check.role.middleware";
 
 class UserController implements Controller {
   public path: String = "/user";
@@ -18,7 +19,7 @@ class UserController implements Controller {
 
   private initializeRoutes() {
     //GET Routes
-    this.router.get(`${this.path}/all`, this.getAllUsers);
+    this.router.get(`${this.path}/all`, AuthMiddleware, CheckAdminMiddleware, this.getAllUsers);
     this.router.get(`${this.path}/getuser`, AuthMiddleware, this.getUser);
 
     //PATCH Routes
@@ -37,7 +38,7 @@ class UserController implements Controller {
       const response = await this.userservice.getAllUsers();
       return res.status(200).json({
         success: true,
-        message: "Successfully got the list of all Materials",
+        message: "Successfully got all Usesr",
         data: response,
         err: {},
       });
@@ -52,7 +53,7 @@ class UserController implements Controller {
       const response = await this.userservice.getOneUser(userId);
       return res.status(200).json({
         success: true,
-        message: "Successfully got the user",
+        message: "Successfully got a user",
         data: response,
         err: {},
       });

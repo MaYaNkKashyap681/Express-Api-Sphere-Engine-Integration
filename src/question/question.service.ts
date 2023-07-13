@@ -94,7 +94,7 @@ class QuestionService implements Service {
   
         return axios
           .post(
-            "https://api.compilers.sphere-engine.com/api/v4/submissions?access_token=c79cb7486d179a4cf4b7ca7fe85a5978",
+            `https://api.compilers.sphere-engine.com/api/v4/submissions?access_token=${process.env.api_token}`,
             payload
           )
           .then((response) => {
@@ -116,7 +116,7 @@ class QuestionService implements Service {
           return new Promise(async (resolve, reject) => {
             try {
               const response = await axios.get(
-                `https://api.compilers.sphere-engine.com/api/v4/submissions/${submissionId}?access_token=c79cb7486d179a4cf4b7ca7fe85a5978`
+                `https://api.compilers.sphere-engine.com/api/v4/submissions/${submissionId}?access_token=${process.env.api_token}`
               );
   
               if (response && response.data) {
@@ -137,7 +137,7 @@ class QuestionService implements Service {
             return new Promise(async (resolve, reject) => {
               try {
                 const response = await axios.get(
-                  `https://api.compilers.sphere-engine.com/api/v4/submissions/${submissionId}/output?access_token=c79cb7486d179a4cf4b7ca7fe85a5978`
+                  `https://api.compilers.sphere-engine.com/api/v4/submissions/${submissionId}/output?access_token=${process.env.api_token}`
                 );
   
                 if (response && response.data) {

@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "dist/server.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "/dist/server.js" }
+    ],
+    "env": {
+        "api_token": "c79cb7486d179a4cf4b7ca7fe85a5978",
+        "mongo_uri": "mongodb+srv://root:root@cluster0.fdzjlxe.mongodb.net/?retryWrites=true&w=majority",
+        "port": "3000",
+        "secret": "mycatyourcat"
+    }
+  }

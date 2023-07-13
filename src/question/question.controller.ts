@@ -29,7 +29,7 @@ class QuestionController implements Controller {
     this.router.patch(
       `${this.path}/addtc/:questionId`,
       AuthMiddleware,
-      CheckAdminMiddleware,
+      // CheckAdminMiddleware,
       this.addTestCase
     );
     this.router.delete(
@@ -55,7 +55,7 @@ class QuestionController implements Controller {
       const response = await this.questionservice.findAll();
       return res.status(200).json({
         success: true,
-        message: "Successfully got the list of all Materials",
+        message: "Successfully got the list of all questions",
         data: response,
         err: {},
       });
@@ -74,7 +74,7 @@ class QuestionController implements Controller {
       const response = await this.questionservice.findOne(questionId);
       return res.status(200).json({
         success: true,
-        message: "Successfully got the list of all Materials",
+        message: "Successfully got the question",
         data: response,
         err: {},
       });
@@ -96,9 +96,9 @@ class QuestionController implements Controller {
         testCases: testCases,
       };
       const response = await this.questionservice.addQuestion(data);
-      return res.status(200).json({
+      return res.status(201).json({
         success: true,
-        message: "Successfully got the list of all Materials",
+        message: "Added a new question",
         data: response,
         err: {},
       });
@@ -114,10 +114,10 @@ class QuestionController implements Controller {
   ) => {
     try {
       const { questionId } = req.params;
-      const response = await this.questionservice.addTestCase(questionId, null);
+      const response = await this.questionservice.addTestCase(questionId, req.body);
       return res.status(200).json({
         success: true,
-        message: "Successfully got the list of all Materials",
+        message: "Successfully added a Test Case",
         data: response,
         err: {},
       });
@@ -136,7 +136,7 @@ class QuestionController implements Controller {
       const response = await this.questionservice.deleteQuestion(questionId);
       return res.status(200).json({
         success: true,
-        message: "Successfully got the list of all Materials",
+        message: "Successfully deleted a Question",
         data: response,
         err: {},
       });
@@ -158,7 +158,7 @@ class QuestionController implements Controller {
       );
       return res.status(200).json({
         success: true,
-        message: "Successfully got the list of all Materials",
+        message: "Successfully modifid the Question",
         data: response,
         err: {},
       });
@@ -176,7 +176,7 @@ class QuestionController implements Controller {
       );
       return res.status(200).json({
         success: true,
-        message: "Successfully got the list of all Materials",
+        message: "Question Submission Status Here",
         data: response,
         err: {},
       });

@@ -1,7 +1,7 @@
 import WrongAuthTokenPassedException from "../exceptions/auth.access-token.exception";
 import AuthTokenMissing from "../exceptions/auth.token.exception";
 import HttpException from "../exceptions/http.exception";
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Response } from "express";
 import RequestWithUser from "../globalinterfaces/user.request.interface";
 import * as jwt from "jsonwebtoken";
 import userModel from "../models/user.model";
@@ -14,8 +14,6 @@ async function AuthMiddleware(
 ) {
   try {
     const authHeader = request.header("Authorization");
-
-    console.log(authHeader, request.header)
 
     if (!authHeader) {
       throw new AuthTokenMissing();

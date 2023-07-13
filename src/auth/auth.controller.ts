@@ -40,7 +40,7 @@ class AuthController implements Controller {
 
       return res.status(200).json({
         success: true,
-        message: "Successfully got the list of all Materials",
+        message: "Successfully User is registered",
         data: {
           email: response.email,
           token: response.token,
@@ -68,7 +68,7 @@ class AuthController implements Controller {
       const response = await this.authservice.loginUser(data);
       return res.status(200).json({
         success: true,
-        message: "Successfully got the list of all Materials",
+        message: "Successfully user is signedin ",
         data: {
           email: response.email,
           token: response.token,
