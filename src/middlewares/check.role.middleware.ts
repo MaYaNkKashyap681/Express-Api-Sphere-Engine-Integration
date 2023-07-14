@@ -11,7 +11,7 @@ const CheckAdminMiddleware = (
     if (request.user.role === "admin") {
       next();
     } else {
-      throw new HTTPException(401, "You are not allowed");
+      throw new HTTPException(403, "You are not allowed");
     }
   } catch (error) {
     next(error);

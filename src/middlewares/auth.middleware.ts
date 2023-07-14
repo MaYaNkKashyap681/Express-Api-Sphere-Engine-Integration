@@ -35,7 +35,7 @@ async function AuthMiddleware(
       throw new WrongAuthTokenPassedException();
     }
   } catch (error) {
-    next(new HttpException(401, error.message)); // Adjust the status code as per your requirements
+    next(new HttpException(401, error.message));
   }
 }
 
